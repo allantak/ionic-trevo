@@ -1,0 +1,7 @@
+{
+  "name": "trevo-ionic-angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
