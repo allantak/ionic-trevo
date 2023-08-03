@@ -1,0 +1,27 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <img [src]="img" alt="">
+    <p>
+      Bem Vindo ao aplicativo Trevo
+    </p>
+  </div>
+  <div class="wrapper-form">
+    <ion-input
+      aria-label="Email"
+      placeholder="Email"
+      class="custom"
+      [(ngModel)]="email"
+    ></ion-input>
+
+    <ion-input
+      aria-label="Senha"
+      placeholder="Senha"
+      class="custom"
+      [(ngModel)]="senha"
+      type="password"
+    ></ion-input>
+
+    <ion-button shape="round" fill="outline" (click)="onSubmit()">Entrar</ion-button>
+
+  </div>
+</ion-content>
