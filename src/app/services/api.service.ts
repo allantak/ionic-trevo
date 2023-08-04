@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ItokenResponse } from '../types/token';
+import { ITokenResponse } from '../types/token';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,6 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   login(data: any) {
-    return this.http.post<ItokenResponse>(`${this.apiUrl}/login`, data);
+    return this.http.post<ITokenResponse>(`${this.apiUrl}/login`, data);
   }
 }

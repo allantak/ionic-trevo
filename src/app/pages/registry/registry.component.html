@@ -1,0 +1,51 @@
+<ion-content class="ion-padding">
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu Content</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">This is the menu content.</ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <div class="header">
+        <p>Dados Chamado</p>
+        <div class="line"></div>
+      </div>
+
+      <form>
+        <ion-img
+          src="https://docs-demo.ionic.io/assets/madison.jpg"
+          alt="The Wisconsin State Capitol building in Madison, WI at night"
+        ></ion-img>
+        <ion-input type="file"></ion-input>
+
+        <ion-input  placeholder="Descrição" class="custom" type="text"></ion-input>
+
+
+
+        <ion-input  placeholder="Descrição" class="custom" type="text"></ion-input>
+
+        <ion-label>Locação</ion-label>
+
+        <div class="location">
+          <ion-input placeholder="Latitude" class="custom" type="text"></ion-input>
+          <ion-input placeholder="Longitude" class="custom" type="text"></ion-input>
+        </div>
+
+        <ion-button class="submit" expand="full" type="submit"
+          >Enviar</ion-button
+        >
+      </form>
+    </ion-content>
+  </div>
+</ion-content>

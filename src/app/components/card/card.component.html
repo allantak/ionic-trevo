@@ -1,3 +1,16 @@
-<p>
-  card works!
-</p>
+<ion-card class="horizontal-card">
+  <ion-card-header>
+    <ion-card-subtitle>{{ callData.priority }}</ion-card-subtitle>
+    <ion-card-title>{{ callData.title }}</ion-card-title>
+  </ion-card-header>
+  <ion-item lines="none">
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-card>

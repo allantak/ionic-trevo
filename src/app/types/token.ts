@@ -1,4 +1,4 @@
-export interface ItokenResponse {
+export interface ITokenResponse {
   token: string;
   accountId: string;
 }

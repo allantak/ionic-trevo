@@ -1,0 +1,33 @@
+
+ion-toolbar{
+  --background: var(--ion-color-primary);
+  --border-style: none;
+  color: white;
+
+}
+
+ion-menu-button{
+  --color: white;
+}
+
+
+.add-card{
+  background-color:  var(--ion-color-primary); /* Cor de fundo verde */
+  border-radius: 0 0 10px 10px; /* Borda arredondada para a div */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  ion-button {
+    width: 100%;
+
+    p{
+      color: white;
+    }
+
+  }
+}
