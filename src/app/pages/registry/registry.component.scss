@@ -33,7 +33,7 @@ ion-menu-button{
   width: 30%;
 }
 
-form{
+.form{
   display: flex;
   flex-direction: column;
   padding:20px 10px;
@@ -81,3 +81,8 @@ ion-input.custom {
   --padding-start: 20px;
   --padding-top: 10px;
 }
+
+input[type='file'] {
+  display: none
+}
+

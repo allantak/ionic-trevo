@@ -21,8 +21,9 @@
       >
     </div>
     <ion-content>
-
-    <app-card [callData]="call"></app-card>
+      <div *ngFor="let call of listCall">
+        <app-card [callData]="call"></app-card>
+      </div>
     </ion-content>
   </div>
 </ion-content>

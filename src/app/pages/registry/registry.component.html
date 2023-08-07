@@ -22,30 +22,27 @@
         <div class="line"></div>
       </div>
 
-      <form>
-        <ion-img
-          src="https://docs-demo.ionic.io/assets/madison.jpg"
-          alt="The Wisconsin State Capitol building in Madison, WI at night"
-        ></ion-img>
-        <ion-input type="file"></ion-input>
+      <div class="form">
 
-        <ion-input  placeholder="Descrição" class="custom" type="text"></ion-input>
+        <ion-img [src]="selectedImage" (click)="openImagePicker()"></ion-img>
+
+        <ion-input  [(ngModel)]="title"  placeholder="Titulo" class="custom" type="text"></ion-input>
 
 
 
-        <ion-input  placeholder="Descrição" class="custom" type="text"></ion-input>
+        <ion-input [(ngModel)]="priority" class="custom" type="text"></ion-input>
 
         <ion-label>Locação</ion-label>
 
         <div class="location">
-          <ion-input placeholder="Latitude" class="custom" type="text"></ion-input>
-          <ion-input placeholder="Longitude" class="custom" type="text"></ion-input>
+          <ion-input [(ngModel)]="latitude" placeholder="Latitude" class="custom" type="text"></ion-input>
+          <ion-input [(ngModel)]="longitude" placeholder="Longitude" class="custom" type="text"></ion-input>
         </div>
 
-        <ion-button class="submit" expand="full" type="submit"
+        <ion-button (click)="onSubmit()" class="submit" expand="full" type="submit"
           >Enviar</ion-button
         >
-      </form>
+      </div>
     </ion-content>
   </div>
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import '../../types/call';
+import { ICall } from 'src/app/types/call';
+
 
 @Component({
   selector: 'app-card',

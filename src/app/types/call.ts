@@ -1,5 +1,5 @@
-interface ICall{
-  id: string,
-  title: string,
-  priority: string
+export interface ICall{
+  title?: string,
+  priority?: string,
+  imgUrl?: string
 }
