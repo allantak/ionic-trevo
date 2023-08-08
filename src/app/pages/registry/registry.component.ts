@@ -1,53 +1,121 @@
 import { Component, OnInit } from '@angular/core';
+import { Camera, CameraResultType } from '@capacitor/camera';
 import { ApiService } from 'src/app/services/api.service';
 import { ICall } from 'src/app/types/call';
+import { Geolocation } from '@capacitor/geolocation';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-registry',
   templateUrl: './registry.component.html',
   styleUrls: ['./registry.component.scss'],
 })
-export class RegistryComponent  implements OnInit {
-
+export class RegistryComponent implements OnInit {
+  id?: number;
   title?: string;
   priority?: string;
   img?: string;
-  latitude?: string;
-  longitude?: string;
+  latitude?: number;
+  longitude?: number;
+  selectedImage: string | ArrayBuffer = "https://docs-demo.ionic.io/assets/madison.jpg";
+  update: boolean = false;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router, private routerParameter: ActivatedRoute, private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit() {
+    let paramCategory = this.routerParameter.snapshot.paramMap;
+
+    if (paramCategory.get("title")) {
+      this.id = parseInt( paramCategory.get("id") ?? "")
+      this.title = paramCategory.get("title") ?? "";
+      this.priority = paramCategory.get("priority") ?? "";
+
+      const latitudeString = paramCategory.get("lat");
+      const longitudeString = paramCategory.get("lot")
+
+      if (latitudeString !== null && longitudeString !== null) {
+        this.longitude = parseFloat(longitudeString);
+        this.latitude = parseFloat(latitudeString);
+      } else {
+        this.latitude = undefined;
+        this.longitude = undefined;
+      }
+      this.img = paramCategory.get("imgUrl") ?? "";
+      this.selectedImage =  paramCategory.get("imgUrl") ?? "";
+      this.update = true;
+    } else {
+      this.printCurrentPosition()
+    }
+
+
+
   }
 
-  selectedImage: string | ArrayBuffer = "https://docs-demo.ionic.io/assets/madison.jpg";
-
-  openImagePicker(): void {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.addEventListener('change', (event: any) => this.onImageSelected(event));
-    input.click();
+  onImageSelected(imageUrl: string): void {
+    if (imageUrl) {
+      console.log(imageUrl)
+      this.selectedImage = imageUrl;
+      this.img = imageUrl;
+    }
   }
 
-  onImageSelected(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.selectedImage = e.target.result;
-      };
-      reader.readAsDataURL(file);
+  async takePicture() {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: true,
+        resultType: CameraResultType.DataUrl,
+      });
+      const imageUrl: any = image.dataUrl;
+
+      this.onImageSelected(imageUrl);
+
+    } catch (error) {
+      console.error('Error taking picture:', error);
     }
   }
 
   onSubmit(): void {
     const data: ICall = {
-      title: "123123123",
-      priority: "324234234",
-      imgUrl: "123123123"
+      title: this.title,
+      priority: this.priority,
+      imgUrl: this.selectedImage,
+      lat: this.latitude,
+      lot: this.longitude
     }
-    this.apiService.add(data).subscribe(data => { console.log(data)});
+    if( !this.update){
+      this.apiService.add(data).subscribe(
+        {
+          next: () => {
+            this.title = "";
+            this.priority = "";
+            this.img = "";
+            this.router.navigateByUrl('/home');
+          }
+        });
+    }else {
+      if(this.id !== undefined){
+        this.apiService.update(this.id, data).subscribe(
+          {
+            next: () => {
+              this.title = "";
+              this.priority = "";
+              this.img = "";
+              this.router.navigateByUrl('/home');
+            }
+          });
+      }
+
+    }
+
   }
+
+  async printCurrentPosition() {
+    const coordinates = await Geolocation.getCurrentPosition();
+    this.latitude = coordinates.coords.latitude;
+    this.longitude = coordinates.coords.longitude;
+  };
 
 }

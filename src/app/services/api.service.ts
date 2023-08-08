@@ -10,6 +10,7 @@ import * as jsonData from '../../assets/list.call.json';
 })
 export class ApiService {
   private apiUrl = 'http://localhost:8081';
+  private mockApiUrl = 'https://64d0efa7ff953154bb79be0d.mockapi.io/call'
 
 
   constructor(private http: HttpClient) { }
@@ -18,11 +19,24 @@ export class ApiService {
     return this.http.post<ITokenResponse>(`${this.apiUrl}/login`, data);
   }
 
-  listCall(){
-   return  this.http.get<Array<ICall>>('assets/list.call.json');
+  listCall() {
+    return this.http.get<Array<ICall>>(this.mockApiUrl);
   }
 
-  add(data: any){
-    return  this.http.put('assets/list.call.json', data);
-   }
+  add(data: any) {
+    return this.http.post(this.mockApiUrl, data);
+  }
+
+
+  getId(id: any) {
+    return this.http.get(this.mockApiUrl + `/${id}`);
+  }
+
+  update(id: number ,call: ICall) {
+    return this.http.put(this.mockApiUrl + `/${id}`, call);
+  }
+
+  delete(id: any) {
+    return this.http.delete(this.mockApiUrl + `/${id}`);
+  }
 }

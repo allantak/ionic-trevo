@@ -22,7 +22,7 @@
     </div>
     <ion-content>
       <div *ngFor="let call of listCall">
-        <app-card [callData]="call"></app-card>
+        <app-card [callData]="call" (deleteEvent)="delete($event)" (updateEvent)="update($event)"></app-card>
       </div>
     </ion-content>
   </div>

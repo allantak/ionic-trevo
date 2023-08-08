@@ -5,10 +5,10 @@
   </ion-card-header>
   <ion-item lines="none">
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="onClickDelete(callData.id)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
-      <ion-button>
+      <ion-button (click)="onClickUpdate(callData)">
         <ion-icon name="create"></ion-icon>
       </ion-button>
     </ion-buttons>

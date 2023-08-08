@@ -24,13 +24,13 @@
 
       <div class="form">
 
-        <ion-img [src]="selectedImage" (click)="openImagePicker()"></ion-img>
+        <ion-img [src]="selectedImage" (click)="takePicture()"></ion-img>
 
         <ion-input  [(ngModel)]="title"  placeholder="Titulo" class="custom" type="text"></ion-input>
 
 
 
-        <ion-input [(ngModel)]="priority" class="custom" type="text"></ion-input>
+        <ion-input [(ngModel)]="priority"  placeholder="Prioridade" class="custom" type="text"></ion-input>
 
         <ion-label>Locação</ion-label>
 

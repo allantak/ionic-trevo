@@ -21,16 +21,29 @@ export class HomeComponent  implements OnInit {
   }
 
   ngOnInit() {
-
-
-    console.log(localStorage.getItem('token'))
-    this.apiService.listCall().subscribe(listCall => this.listCall = listCall);
-
+    this.getAll();
   }
 
   onClickAddCall(){
-    console.log("entrou")
     this.router.navigate(['registry']);
   }
+
+  delete(id: number){
+    console.log(id)
+    this.apiService.delete(id).subscribe({ next: () => {
+      this.getAll();
+    }})
+  }
+
+  getAll(){
+    this.apiService.listCall().subscribe(listCall => this.listCall = listCall);
+  }
+
+  update(element: ICall){
+    console.log(element);
+
+    this.router.navigate(['registry', element]);
+  }
+
 
 }
