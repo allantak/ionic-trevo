@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { ICall } from 'src/app/types/call';
 
@@ -9,11 +10,12 @@ import { ICall } from 'src/app/types/call';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent  implements OnInit {
+export class HomeComponent implements OnInit {
 
   listCall: Array<ICall> = [];
 
-  constructor( private router: Router, private apiService: ApiService) { }
+  constructor(private router: Router,
+    private apiService: ApiService, private menu: MenuController) { }
 
   call: ICall = {
     title: "vasco",
@@ -24,25 +26,31 @@ export class HomeComponent  implements OnInit {
     this.getAll();
   }
 
-  onClickAddCall(){
+  onClickAddCall() {
     this.router.navigate(['registry']);
   }
 
-  delete(id: number){
+  delete(id: number) {
     console.log(id)
-    this.apiService.delete(id).subscribe({ next: () => {
-      this.getAll();
-    }})
+    this.apiService.delete(id).subscribe({
+      next: () => {
+        this.getAll();
+      }
+    })
   }
 
-  getAll(){
+  getAll() {
     this.apiService.listCall().subscribe(listCall => this.listCall = listCall);
   }
 
-  update(element: ICall){
+  update(element: ICall) {
     console.log(element);
 
     this.router.navigate(['registry', element]);
+  }
+
+  test() {
+    console.log("tetetete")
   }
 
 

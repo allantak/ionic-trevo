@@ -77,7 +77,7 @@ export class RegistryComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
+  async onSubmit() {
     const data: ICall = {
       title: this.title,
       priority: this.priority,
@@ -86,7 +86,7 @@ export class RegistryComponent implements OnInit {
       lot: this.longitude
     }
     if( !this.update){
-      this.apiService.add(data).subscribe(
+      await this.apiService.add(data).subscribe(
         {
           next: () => {
             this.title = "";
@@ -97,7 +97,7 @@ export class RegistryComponent implements OnInit {
         });
     }else {
       if(this.id !== undefined){
-        this.apiService.update(this.id, data).subscribe(
+        await this.apiService.update(this.id, data).subscribe(
           {
             next: () => {
               this.title = "";

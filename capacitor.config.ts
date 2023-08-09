@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'trevo-ionic-angular',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'http'
   }
 };
 

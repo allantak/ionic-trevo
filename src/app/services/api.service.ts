@@ -9,8 +9,8 @@ import * as jsonData from '../../assets/list.call.json';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:8081';
-  private mockApiUrl = 'https://64d0efa7ff953154bb79be0d.mockapi.io/call'
+  private apiUrl = 'http://10.0.0.43:8081';
+  private mockApiUrl = 'http://64d0efa7ff953154bb79be0d.mockapi.io/call'
 
 
   constructor(private http: HttpClient) { }
