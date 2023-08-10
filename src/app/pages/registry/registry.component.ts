@@ -21,7 +21,7 @@ export class RegistryComponent implements OnInit {
   selectedImage: string | ArrayBuffer = "https://docs-demo.ionic.io/assets/madison.jpg";
   update: boolean = false;
 
-  constructor(private apiService: ApiService, private router: Router, private routerParameter: ActivatedRoute, private sanitizer: DomSanitizer) {
+  constructor(private apiService: ApiService, private router: Router, private routerParameter: ActivatedRoute) {
   }
 
   ngOnInit() {

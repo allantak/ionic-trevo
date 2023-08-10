@@ -49,9 +49,5 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['registry', element]);
   }
 
-  test() {
-    console.log("tetetete")
-  }
-
 
 }

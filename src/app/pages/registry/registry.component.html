@@ -1,12 +1,5 @@
 <ion-content class="ion-padding">
-  <ion-menu contentId="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Menu Content</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">This is the menu content.</ion-content>
-  </ion-menu>
+
   <div class="ion-page" id="main-content">
     <ion-header>
       <ion-toolbar>
@@ -24,13 +17,14 @@
 
       <div class="form">
 
-        <ion-img [src]="selectedImage" (click)="takePicture()"></ion-img>
+
+        <div class="image-container" (click)="takePicture()" [style.backgroundImage]="'url(' + selectedImage + ')'"></div>
 
         <ion-input  [(ngModel)]="title"  placeholder="Titulo" class="custom" type="text"></ion-input>
 
 
 
-        <ion-input [(ngModel)]="priority"  placeholder="Prioridade" class="custom" type="text"></ion-input>
+        <ion-input  [(ngModel)]="priority"  placeholder="Prioridade" class="custom" type="text"></ion-input>
 
         <ion-label>Locação</ion-label>
 
@@ -39,7 +33,7 @@
           <ion-input [(ngModel)]="longitude" placeholder="Longitude" class="custom" type="text"></ion-input>
         </div>
 
-        <ion-button (click)="onSubmit()" class="submit" expand="full" type="submit"
+        <ion-button shape="round" (click)="onSubmit()" class="submit" expand="full" type="submit"
           >Enviar</ion-button
         >
       </div>

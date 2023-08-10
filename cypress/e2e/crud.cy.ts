@@ -1,5 +1,5 @@
 describe('Card Component', () => {
-  it('deve ser capaz de cadastrar uma chamada', () => {
+  it('deve ser capaz de cadastrar e listar as chamada', () => {
     cy.visit('http://localhost:8100/home'); // Modifique a rota de acordo com a sua aplicação
 
     // Renderize o componente <app-card> na página home
@@ -29,7 +29,7 @@ describe('Card Component', () => {
 
   });
 
-  it('capaz de fazer alteração', ()=> {
+  it('deve ser capaz de fazer alteração', ()=> {
     // Verifique se a lista de chamadas agora contém duas chamadas
     cy.visit('http://localhost:8100/home'); // Modifique a rota de acordo com a sua aplicação
 
@@ -50,7 +50,7 @@ describe('Card Component', () => {
 
   })
 
-  it('capaz de deletar', ()=> {
+  it('deve ser capaz de deletar', ()=> {
     // Verifique se a lista de chamadas agora contém duas chamadas
     cy.visit('http://localhost:8100/home'); // Modifique a rota de acordo com a sua aplicação
 
