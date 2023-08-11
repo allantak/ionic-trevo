@@ -113,3 +113,8 @@ input[type='file'] {
   width: 100%; /* Defina a largura e a altura conforme necessário */
   height: 200px;
 }
+
+ion-modal{
+  --width: 200px;
+  --height: none;
+}

@@ -22,10 +22,22 @@
 
         <ion-input  [(ngModel)]="title"  placeholder="Titulo" class="custom" type="text"></ion-input>
 
-
-
-        <ion-input  [(ngModel)]="priority"  placeholder="Prioridade" class="custom" type="text"></ion-input>
-
+        <ion-input id="open-custom-dialog" [(ngModel)]="priority"  placeholder="Prioridade" class="custom" type="text"></ion-input>
+        <ion-modal class="modal" id="example-modal" #modal trigger="open-custom-dialog">
+          <ng-template>
+              <ion-list lines="none">
+                <ion-item button="true" detail="false" (click)="getValueModal('urgente')">
+                  <ion-label>Urgente</ion-label>
+                </ion-item>
+                <ion-item button="true" detail="false" (click)="getValueModal('media')">
+                  <ion-label>Media</ion-label>
+                </ion-item>
+                <ion-item button="true" detail="false" (click)="getValueModal('baixa')">
+                  <ion-label>Baixa</ion-label>
+                </ion-item>
+              </ion-list>
+          </ng-template>
+        </ion-modal>
         <ion-label>Locação</ion-label>
 
         <div class="location">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   listCall: Array<ICall> = [];
 
   constructor(private router: Router,
-    private apiService: ApiService, private menu: MenuController) { }
+    private apiService: ApiService, private cdRef: ChangeDetectorRef) { }
 
   call: ICall = {
     title: "vasco",
@@ -26,12 +26,15 @@ export class HomeComponent implements OnInit {
     this.getAll();
   }
 
+  ionViewWillEnter() {
+    this.getAll();
+  }
+
   onClickAddCall() {
     this.router.navigate(['registry']);
   }
 
   delete(id: number) {
-    console.log(id)
     this.apiService.delete(id).subscribe({
       next: () => {
         this.getAll();

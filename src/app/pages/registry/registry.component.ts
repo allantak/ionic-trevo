@@ -5,6 +5,7 @@ import { ICall } from 'src/app/types/call';
 import { Geolocation } from '@capacitor/geolocation';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registry',
@@ -14,14 +15,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class RegistryComponent implements OnInit {
   id?: number;
   title?: string;
-  priority?: string;
+  priority: string = "";
   img?: string;
   latitude?: number;
   longitude?: number;
-  selectedImage: string | ArrayBuffer = "https://docs-demo.ionic.io/assets/madison.jpg";
+  selectedImage: string | ArrayBuffer = "../../../assets/placeholder.png";
   update: boolean = false;
 
-  constructor(private apiService: ApiService, private router: Router, private routerParameter: ActivatedRoute) {
+  constructor(private apiService: ApiService,
+     private router: Router,
+      private routerParameter: ActivatedRoute, private modalController: ModalController) {
   }
 
   ngOnInit() {
@@ -117,5 +120,10 @@ export class RegistryComponent implements OnInit {
     this.latitude = coordinates.coords.latitude;
     this.longitude = coordinates.coords.longitude;
   };
+
+  getValueModal(value: string){
+    this.priority= value;
+    this.modalController.dismiss();
+  }
 
 }

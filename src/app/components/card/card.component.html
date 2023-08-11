@@ -1,15 +1,15 @@
 <ion-card class="horizontal-card">
   <ion-card-header>
-    <ion-card-subtitle>{{ callData.priority }}</ion-card-subtitle>
+    <ion-card-subtitle [style.color]="callData.priority | priority" >{{ callData.priority }}</ion-card-subtitle>
     <ion-card-title>{{ callData.title }}</ion-card-title>
   </ion-card-header>
   <ion-item lines="none">
     <ion-buttons slot="end">
-      <ion-button (click)="onClickDelete(callData.id)" id="button-delete">
-        <ion-icon color="danger" name="trash"></ion-icon>
-      </ion-button>
       <ion-button (click)="onClickUpdate(callData)" id="button-update">
         <ion-icon color="primary" name="create"></ion-icon>
+      </ion-button>
+      <ion-button (click)="onClickDelete(callData.id)" id="button-delete">
+        <ion-icon color="danger" name="trash"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-item>
